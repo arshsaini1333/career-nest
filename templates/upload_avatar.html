@@ -1,0 +1,27 @@
+<!-- upload_avatar.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Avatar</title>
+</head>
+<body>
+    <h1>Upload Avatar</h1>
+
+    <!-- Display uploaded image -->
+    {% if profile.avatar %}
+        <img src="{{ profiles.avatar.url }}" alt="Avatar">
+    {% else %}
+        <p>No avatar uploaded yet.</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload Avatar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <!-- Adding Google Font -->
+   
+    <link rel="icon" type="image/x-icon" href="./static/cn.jpeg"/>
+     <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <style>
+        .navbar .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        .navbar .navbar-item img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-header navbar-item logo">
+            <a href="/"><span style="font-family: Spicy Rice, serif;">CN</span> CareerNest</a>
+            <i class="fa-solid fa-bars navbar-toggler" id="navbar-toggler"></i>
+        </div>
+        <div class="navbar-collapse" id="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="navbar-item"><a href="/">Home</a></li>
+                <li class="navbar-item"><a href="/searchcompanies">Search Companies</a></li>
+                <li class="navbar-item"><a href="/mockinterview">Mock Interview</a></li> 
+                <li class="navbar-item"><a href="/feedback">Contact</a></li>
+                {% if user.is_authenticated %}
+                    <li class="navbar-item">
+                        <a href="/profile">
+                            <img class="avatar" src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'defaultimage.jpg' %}{% endif %}" alt="User Avatar">
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="navbar-item"><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        {% block body %}{% endblock body %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CareerNest. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbarToggler = document.getElementById('navbar-toggler');
+            const navbarCollapse = document.getElementById('navbar-collapse');
+
+            navbarToggler.addEventListener('click', function () {
+                navbarCollapse.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>

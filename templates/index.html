@@ -1,0 +1,146 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block styles %}
+
+{% endblock %} {% block body %}
+<div class="home-page-container">
+  <div class="home-page-header"> 
+    <div class="header-container">
+       <div class="overflow-hidden">
+        <h1 class="header drop-in">Welcome To</h1>
+       </div>
+       <div class="overflow-hidden">
+        <p class="drop-in-2">
+         CareerNest
+        </p>
+       </div>
+    </div>
+     <div class="home-page-subheading slide-right">
+     
+      <h3>Find Companies and Ace Your Interviews</h3>
+    
+     <p>
+      Search company details and prepare for interviews with AI-driven mock interviews.
+     </p>
+    </div>
+
+    <div class="home-scoll">
+      <a href="#main-context"><i class="fa-solid fa-down-long"></i></a>
+    </div>
+  
+</div>
+
+</div>
+
+ <div class="main-context" id="main-context">
+  <div class="home-working-section">
+    <div class="working-headings"><h2>What CareerNest Provide</h2></div>
+    <div class="working-content">
+      <div class="card1 card">
+        <h3>Search for Companies:</h3>
+        <ul>
+         <li> Use our advanced search feature to find companies.</li>
+<li>Enter your desired job domain (e.g. Software Development, Marketing etc).</li>
+<li>Enter your preferred location (e.g. city, state, or country).</li>
+<li>Hit the button and you'll get the list of companies. </li>
+<li>You can also download the excel sheet of companies.</li>
+        </ul>
+        <a href="/searchcompanies">Search Companies</a>
+      </div>
+      <div class="card2 card">
+        <h3>Mock Interviews with AI
+        </h3>
+
+        <ul>
+        <li>  Careernest introduces an AI-powered mock interview feature.</li>
+<li>Designed to help you ace your next job interview.</li>
+<li>Suitable for preparing for your first interview.</li>
+<li>Useful for refining skills for senior-level positions.</li>
+<li>Provides a realistic interview simulation.</li>
+<li>Offers an insightful practice experience.</li>
+<a href="/mockinterview">Mock Interview</a>
+        </ul>
+      </div>
+      <div class="card3 card">
+        <h3>Enhance Your Interview Performance</h3>
+        <ul>
+          <li>CareerNest provides you overview of your interview performance.</li>
+          <li>Understand areas needing improvement.</li>
+          <li>Question-by-question analysis, strengths, and areas for improvement.</li>
+          <li>Examples and comparisons with suggested responses.</li>
+          <li>Personalized advice to enhance interview skills.</li>
+        </ul>
+        <a href="/mockinterview">Test Your Skills</a>
+      </div>
+    </div>
+  </div>
+  <div class="home-feature-section">
+    <div class="feature-heading"><h2>Benefits Using CareerNest</h2></div>
+    <div class="feature-content">
+      <div class="featureC">
+        <div class="features feature1">
+          <div class="fcard-img">
+            <img src="./static/searchComp.jpg" alt="cardImage">
+          </div>
+          <div class="fcard-heading"><h3>Advanced Search Filter</h3></div>
+          <div class="fcard-body">          Easily Find Companies based on your desired domain and location.
+          </div>
+        </div>
+        <div class="features feature2">
+          <div class="fcard-img"><img src="./static/compList.jpg" alt="cardImage"></div>
+          <div class="fcard-heading">
+            <h3>Comprehensive Company Details</h3>
+          </div>
+          <div class="fcard-body">
+            Access detailed information including company pages and HR information.
+          </div>
+        </div>
+      </div>
+      <div class="featureC">
+        <div class="features feature3">
+          <div class="fcard-img"><img src="./static/interview.jpg" alt="cardImage"></div>
+          <div class="fcard-heading">
+            <h3>AI-Powered Mock Interviews</h3>
+          </div>
+          <div class="fcard-body">
+            Practice with an AI chatbot that asks technical and follow-up questions.
+          </div>
+        </div>
+        <div class="features feature4">
+          <div class="fcard-img"><img src="./static/feedback.jpg" alt="cardImage"></div>
+          <div class="fcard-heading">
+            <h3>In-Depth Feedback and Improvement.</h3>
+          </div>
+          <div class="fcard-body">Get a detailed analysis of your response and learn how to improve this.</div>
+        </div>
+      </div>
+      </div>
+  </div>
+  <div class="contact-info-designer">
+    <div class="developer">
+      <h4>Developed By Yash Chindalia</h4>
+    
+      <p>yashchindalia77@gmail.com</p>
+      <div class="contacts">
+        
+        <a href="https://www.linkedin.com/in/yashchindalia/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/yashchindalia"><i class="fa-brands fa-square-github"></i></a>
+        <a href="https://www.instagram.com/yashchindalia/"><i class="fa-brands fa-square-instagram"></i></a>
+
+      </div>
+    </div>
+    <div class="developer">
+      <h4>Designed By Arshdeep Kaur Saini</h4>
+      
+      <p>kaurarshdeep697@gmail.com</p>
+      <div class="contacts">
+        
+        <a href="https://www.linkedin.com/in/arshdeep-kaur-508680210/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/arshsaini1333"><i class="fa-brands fa-square-github"></i></a>
+        <a href="https://www.instagram.com/arsh.saini1333/"><i class="fa-brands fa-square-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+</div>
+{% endblock %}

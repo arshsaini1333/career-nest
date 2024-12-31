@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% comment %} {% endcomment %} {% block title %}Mock
+Interview{% endblock title %} {% comment %} {% endcomment %} {% block body %}
+<div class="container-company-search">
+  <div class="text-company-search">
+    <h1 class="text-center mt-5">Find Companies in Your Domain</h1>
+    <p class="lead text-center">
+      Enter your domain and location to discover companies that match your
+      criteria.
+    </p>
+  </div>
+  <div class="form-company-search">
+    <form method="post" class="form-cs">
+      {% csrf_token %}
+
+      <div>
+        <label for="inputDomain">Domain:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputDomain"
+          name="domain"
+          placeholder="Enter your domain"
+        />
+      </div>
+
+      <div>
+        <label for="inputLocation">Location:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputLocation"
+          name="location"
+          placeholder="Enter your location"
+        />
+      </div>
+      <!-- Hidden Field for search_id -->
+      <div>
+        <input
+          type="hidden"
+          name="search_id"
+          value="{{ form.search_id.value }}"
+        />
+        <!-- End of Hidden Field -->
+        <button type="submit">Find Companies</button>
+      </div>
+    </form>
+  </div>
+ 
+</div>
+
+<footer class="mt-5">
+  <div class="container">
+    <p class="text-center">&copy; 2024 Yash Chindalia. All rights reserved.</p>
+  </div>
+</footer>
+{% endblock body %}

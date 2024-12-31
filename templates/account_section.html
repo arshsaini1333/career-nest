@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Account Section{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Account Section</h1>
+
+    <!-- User Information -->
+    <div class="user-info">
+        <div class="avatar-container">
+            <img class="avatar" src="{% if user.profile.avatar %}{{ user.profile.avatar.url }}{% else %}{% static 'defaultimage.jpg' %}{% endif %}" alt="User Avatar">
+        </div>
+        <div class="user-details">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Image Upload Form -->
+    <div class="upload-form">
+        <form action="{% url 'upload_avatar' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="avatar">Upload New Avatar:</label>
+            <input type="file" name="avatar" id="avatar">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="logout">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    h1{
+        margin-bottom:1.5rem;
+    }
+
+    .container {
+        color: white ;        
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 20px;
+        text-align: center;
+        background-color: #00000076;
+    border-radius: 1rem;
+    border: 2px solid #00000076;
+    box-shadow: 5px 5px 5px #00000076;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .avatar-container {
+        position: relative;
+        display: inline-block;
+        animation: bounce 1s infinite alternate;
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #007bff;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .user-details {
+        margin-top: 10px;
+    }
+
+    .user-details p {
+        font-family: 'Poppins', sans-serif;
+        color: white ;       
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    .upload-form {
+        margin-top: 20px;
+    }
+
+    .upload-form label {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        color: white ;       
+    }
+
+    .upload-form input {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .logout, .upload-form button {
+        margin-top: 20px;
+    }
+
+    .logout button, .upload-form button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white ;       
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout button:hover, .upload-form button:hover {
+        background-color: #0056b3;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes bounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-10px);
+        }
+    }
+</style>
+{% endblock %}

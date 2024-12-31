@@ -1,0 +1,40 @@
+<!-- myapp/templates/myapp/show_data.html -->
+{% extends "base.html" %}
+
+{% block title %}Show Data{% endblock %}
+
+{% block body %}
+    <div class="show-data-container">
+        <h1>Conversation With AI</h1>
+<div>
+    <dl>
+        {% for item in data %}
+        <dt>
+            <i class="fa-solid fa-user"></i>User Response:</dt>
+        <dd>{{ item.user_input }}</dd>
+        <dt>
+            <i class="fa-solid fa-robot"></i>AI Response:</dt>
+        <dd>{{ item.ai_response }}</dd>
+        <dt><i class="fa-solid fa-square-check"></i>Improved Response:</dt>
+        <dd>{{ item.improved_response }}</dd>
+        {% endfor %}
+    </dl>
+
+    </div>
+
+
+    {% comment %} <table border="1">
+        <tr>
+            <th>User Response</th>
+            <th>AI Response</th>
+            <th>Improved Response</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.user_input }}</td>
+            <td>{{ item.ai_response }}</td>
+            <td>{{ item.improved_response }}</td>
+        </tr>
+        {% endfor %}
+    </table> {% endcomment %}
+    {% endblock %}

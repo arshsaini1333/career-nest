@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% comment %} {% endcomment %} {% block title %}Mock
+Interview{% endblock title %} {% comment %} {% endcomment %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div id="chatbox" class="chatbox-container">
+      <h1>Mock Interview</h1>
+      
+      <div class="chatbox">
+        <div id="hello-gif">
+          <img src="/static/robot.gif" alt="hello gif"> 
+        </div>
+        <div id="chatlogs" class="chat-messages-box"></div>
+        <div class="chatbox-input">
+        <input
+          type="text"
+          id="user_input"
+          placeholder="Type your message here..."
+          class="user-input"
+        />
+        <i class="fa-regular fa-paper-plane send-button" id="send" ></i>
+       
+        </div>
+       
+      </div>
+      <div class="impResDiv">
+        <button onclick="window.location.href='/show-data/'" class="impRes">Check Improved response</button>
+      </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      const gifS =document.getElementById("hello-gif");
+
+      function sendMessage() {
+        var user_input = $("#user_input").val().trim(); // Trim leading and trailing whitespace
+        if (user_input === "") {
+          return; // Don't send empty messages
+        }
+        gifS.classList.add("removing-gif");
+        $("#chatlogs").append(
+          '<div class="chatlog user message-bubble"><p>' + user_input + "</p></div>"
+        );
+        $("#user_input").val("");
+        $.ajax({
+          type: "POST",
+          url: "{% url 'chatbot_interaction' %}",
+          data: {
+            user_input: user_input,
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+          },
+          success: function (response) {
+            $("#chatlogs").append(
+              '<div class="chatlog bot message-bubble"><p>' + response.response + "</p></div>"
+            );
+          },
+        });
+      }
+
+      $(document).ready(function () {
+        $("#send").click(function () {
+          sendMessage();
+        });
+        $("#user_input").keypress(function (e) {
+          if (e.which == 13) {
+            // Enter key pressed
+            sendMessage();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+{% endblock body %}

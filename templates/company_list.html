@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Companies List{% endblock title %}
+
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Companies List (Expanded)</title>
+ 
+</head>
+<body>
+  <div class="company-list-container">
+    <div class="company-list-text">
+      <h1 >Companies List </h1>
+    
+      <a href="{% url 'export_to_excel' search_uqid %}" class="company-list-button">Download as Excel</a>
+    </div>
+    <div class="info"> 
+      HR names, linkdin and HR email these data comes under paid subscription for more <a href="/feedback">Contact Us </a>
+    </div>
+    <div class="company-list-table">
+      <table >
+        <thead>
+          <tr>
+            <th>Sr. No</th>
+            <th>Company Name</th>
+            <th>HR Name</th>
+            <th>HR Email</th>
+            <th>LinkedIn ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for company in companies %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td title="Click to open LinkedIn profile (if available)">
+              <a href="{{ company.linkdin_link }}">{{ company.companyname }}</a>
+            </td>
+            <td><i class="fa-solid fa-lock"></i></td>
+            <td><i class="fa-solid fa-lock"></i></td>
+            <td><i class="fa-solid fa-lock"></i></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock body %}
